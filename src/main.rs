@@ -73,3 +73,131 @@ fn test_map() {
     assert_eq!(map.get("age"), Some(&"5"));
     assert_eq!(map.get("lang"), Some(&"Rust"));
 }
+
+
+
+fn mark_class(mark: i32) -> String {
+    if mark >=80 && mark <= 100 {
+        "A".to_owned()
+    } else if mark >= 60 && mark < 80 {
+        "B".to_owned()
+    } else if mark >= 40 && mark < 60 {
+        "C".to_owned()
+    } else {
+        "D".to_owned()
+    }
+    
+}
+
+#[test]
+fn test_mark_class() {
+    assert_eq!(mark_class(90), "A");
+    assert_eq!(mark_class(70), "B");
+    assert_eq!(mark_class(50), "C");
+    assert_eq!(mark_class(30), "D");
+}
+
+
+
+fn star(row: i32) {
+    for i in 0..row {
+        for _ in 0..i {
+            print!("*");
+        }
+        println!();
+    }
+}
+
+#[test]
+fn test_star() {
+    star(5);
+}
+
+fn star_reverse(row: i32) {
+    for i in 0..row {
+        for _ in 0..row - i {
+            print!("*");
+        }
+        println!();
+    }
+}
+
+#[test]
+fn test_star_reverse() {
+    star_reverse(5);
+}
+
+fn star_pyramid(row: i32) {
+    for i in 0..row {
+        for _ in 0..row - i {
+            print!(" ");
+        }
+        for _ in 0..2 * i + 1 {
+            print!("*");
+        }
+        println!();
+    }
+}
+
+#[test]
+fn test_star_pyramid() {
+    star_pyramid(5);
+}
+
+#[test]
+fn test_star_pyramid_reverse() {
+    star_pyramid_reverse(5);
+}
+
+fn star_pyramid_reverse(row: i32) {
+    for i in 0..row {
+        for _ in 0..i {
+            print!(" ");
+        }
+        for _ in 0..2 * (row - i) - 1 {
+            print!("*");
+        }
+        println!();
+    }
+}
+
+#[test]
+fn test_variable_shadowing() {
+    let name = "Rust";
+    println!("name: {}", name);
+    let name = "Go";
+    println!("name: {}", name);
+    assert_eq!(name, "Go");
+}
+
+#[test]
+fn test_variable_augmented() {
+    let mut num = 90;
+    println!("num: {}", num);
+    num *= 100;
+    println!("num: {}", num);
+}
+
+#[test]
+fn test_boolean() {
+    let a: bool = false;
+    print!("a: {}", a);
+}
+
+#[test]
+fn test_itteration() {
+    for i in 0..5 {
+        println!("i: {}", i);
+    }
+}
+
+fn get_name() -> String {
+    let name = String::from("Rust");
+    return name;
+}
+
+#[test]
+fn test_get_name() {
+    let name = get_name();
+    assert_eq!(name, "Rust");
+}
